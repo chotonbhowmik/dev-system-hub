@@ -5,13 +5,16 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Github, Linkedin, Mail, Send } from "lucide-react";
+import { Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
-const socialLinks = [
-  { href: "https://github.com", icon: Github, label: "GitHub", handle: "@developer" },
-  { href: "https://linkedin.com", icon: Linkedin, label: "LinkedIn", handle: "/in/developer" },
-  { href: "mailto:hello@developer.dev", icon: Mail, label: "Email", handle: "hello@developer.dev" },
+const serviceOptions = [
+  "Business website",
+  "CMS build (WordPress / Webflow / Wix)",
+  "Web app (React / Vue / Next.js)",
+  "API integration",
+  "UI systems & design",
+  "Something else",
 ];
 
 export default function Contact() {
@@ -21,15 +24,15 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate form submission
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    
+
     toast({
-      title: "Message sent",
+      title: "Inquiry sent",
       description: "Thanks for reaching out. I'll get back to you soon.",
     });
-    
+
     setIsSubmitting(false);
     (e.target as HTMLFormElement).reset();
   };
@@ -41,19 +44,20 @@ export default function Contact() {
           {/* Page Header */}
           <div className="max-w-2xl mb-12">
             <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Contact
+              Let's make something worth remembering.
             </h1>
             <p className="text-muted-foreground leading-relaxed">
-              Have a project in mind or want to discuss opportunities? 
-              I'm always open to interesting conversations and collaborations.
+              Whether you need a business website, a CMS build, a portfolio, or a
+              marketing experience, I can help turn your idea into a clear, polished
+              web presence.
             </p>
           </div>
 
           <div className="grid gap-16 lg:grid-cols-2">
-            {/* Contact Form */}
+            {/* Inquiry Form */}
             <div>
-              <CodeDivider label="Send a Message" />
-              
+              <CodeDivider label="Send Inquiry" />
+
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="space-y-2">
                   <Label htmlFor="name" className="font-mono text-sm">
@@ -76,20 +80,42 @@ export default function Contact() {
                     id="email"
                     name="email"
                     type="email"
-                    placeholder="your@email.com"
+                    placeholder="you@example.com"
                     required
                     className="bg-card border-border font-mono text-sm"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="message" className="font-mono text-sm">
-                    <span className="text-primary">//</span> Message
+                  <Label htmlFor="service" className="font-mono text-sm">
+                    <span className="text-primary">//</span> Project type
+                  </Label>
+                  <select
+                    id="service"
+                    name="service"
+                    required
+                    defaultValue=""
+                    className="w-full h-10 rounded-md border border-border bg-card px-3 py-2 font-mono text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                  >
+                    <option value="" disabled>
+                      Select a service
+                    </option>
+                    {serviceOptions.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="details" className="font-mono text-sm">
+                    <span className="text-primary">//</span> Project details
                   </Label>
                   <Textarea
-                    id="message"
-                    name="message"
-                    placeholder="Tell me about your project..."
+                    id="details"
+                    name="details"
+                    placeholder="Tell me about your project, goals, timeline, and what you need."
                     rows={6}
                     required
                     className="bg-card border-border font-mono text-sm resize-none"
@@ -101,7 +127,7 @@ export default function Contact() {
                     "Sending..."
                   ) : (
                     <>
-                      Send Message
+                      Send inquiry
                       <Send className="ml-2 h-4 w-4" />
                     </>
                   )}
@@ -109,42 +135,43 @@ export default function Contact() {
               </form>
             </div>
 
-            {/* Social Links */}
+            {/* Availability */}
             <div>
-              <CodeDivider label="Connect" />
-              
-              <div className="space-y-6">
-                {socialLinks.map((link) => (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-4 p-4 bg-card border border-border rounded-lg hover:border-primary/50 transition-colors group"
-                  >
-                    <div className="flex items-center justify-center w-12 h-12 bg-secondary rounded-lg group-hover:bg-primary/10 transition-colors">
-                      <link.icon className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
-                    </div>
-                    <div>
-                      <p className="font-mono text-sm text-foreground group-hover:text-primary transition-colors">
-                        {link.label}
-                      </p>
-                      <p className="font-mono text-xs text-muted-foreground">
-                        {link.handle}
-                      </p>
-                    </div>
-                  </a>
-                ))}
+              <CodeDivider label="Availability" />
+
+              <div className="p-6 bg-card border border-border rounded-lg mb-8">
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-60" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
+                  </span>
+                  <p className="font-mono text-sm text-foreground">Available for work</p>
+                </div>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Currently open to new client projects. I work with clients worldwide —
+                  from business websites to full web applications — with clear
+                  communication and fast turnaround.
+                </p>
               </div>
 
-              {/* Availability */}
-              <div className="mt-8 p-4 bg-card border border-border rounded-lg">
+              <div className="p-6 bg-card border border-border rounded-lg">
                 <p className="font-mono text-xs text-muted-foreground mb-2">
-                  <span className="text-primary">/*</span> Availability <span className="text-primary">*/</span>
+                  <span className="text-primary">/*</span> What happens next <span className="text-primary">*/</span>
                 </p>
-                <p className="text-sm text-foreground">
-                  Currently open to new opportunities and freelance projects.
-                </p>
+                <ul className="space-y-3 text-sm text-muted-foreground">
+                  <li className="flex items-start gap-3">
+                    <span className="font-mono text-primary">01</span>
+                    I review your inquiry and reply quickly.
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="font-mono text-primary">02</span>
+                    We hop on a call to align on scope and goals.
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="font-mono text-primary">03</span>
+                    I get to work — with regular updates along the way.
+                  </li>
+                </ul>
               </div>
             </div>
           </div>

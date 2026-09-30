@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import { Github, Linkedin, Mail } from "lucide-react";
 
-const socialLinks = [
-  { href: "https://github.com", icon: Github, label: "GitHub" },
-  { href: "https://linkedin.com", icon: Linkedin, label: "LinkedIn" },
-  { href: "mailto:hello@developer.dev", icon: Mail, label: "Email" },
+const navLinks = [
+  { href: "/work", label: "Work" },
+  { href: "/about", label: "About" },
+  { href: "/testimonials", label: "Testimonials" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export function Footer() {
@@ -16,34 +16,26 @@ export function Footer() {
         <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
           {/* Copyright */}
           <p className="font-mono text-sm text-muted-foreground">
-            <span className="text-primary">//</span> © {currentYear} Diego Ramirez
+            <span className="text-primary">//</span> © {currentYear} Choton Bhowmik
           </p>
 
           {/* Footer Links */}
           <div className="flex items-center gap-6">
-            <Link
-              to="/styleguide"
-              className="font-mono text-sm text-muted-foreground hover:text-primary transition-colors"
-            >
-              Styleguide
-            </Link>
-          </div>
-
-          {/* Social Links */}
-          <div className="flex items-center gap-4">
-            {socialLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors"
-                aria-label={link.label}
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                to={link.href}
+                className="font-mono text-sm text-muted-foreground hover:text-primary transition-colors"
               >
-                <link.icon className="h-5 w-5" />
-              </a>
+                {link.label}
+              </Link>
             ))}
           </div>
+
+          {/* Status */}
+          <p className="font-mono text-sm text-muted-foreground">
+            Full-stack web developer <span className="text-primary">·</span> Bangladesh
+          </p>
         </div>
       </div>
     </footer>
