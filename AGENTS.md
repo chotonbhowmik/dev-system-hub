@@ -1,0 +1,1 @@
+Use one shared GSAP motion controller for route and scroll reveals, and keep Three.js isolated to the homepage background so motion stays consistent and lightweight.

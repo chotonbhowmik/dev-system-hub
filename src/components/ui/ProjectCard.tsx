@@ -1,8 +1,10 @@
+import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { TechTag } from "./TechTag";
 import { cn } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
 import type { Project } from "@/data/portfolio";
+import gsap from "gsap";
 
 interface ProjectCardProps {
   project: Project;
@@ -10,10 +12,46 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project, className }: ProjectCardProps) {
+  const cardRef = useRef<HTMLElement>(null);
+
+  const handlePointerMove = (event: React.PointerEvent<HTMLElement>) => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || event.pointerType === "touch") return;
+    const card = cardRef.current;
+    if (!card) return;
+    const bounds = card.getBoundingClientRect();
+    const x = (event.clientX - bounds.left) / bounds.width - 0.5;
+    const y = (event.clientY - bounds.top) / bounds.height - 0.5;
+    gsap.to(card, {
+      rotateY: x * 3,
+      rotateX: y * -3,
+      y: -4,
+      duration: 0.35,
+      ease: "power2.out",
+      transformPerspective: 900,
+      overwrite: "auto",
+    });
+  };
+
+  const resetCard = () => {
+    const card = cardRef.current;
+    if (!card) return;
+    gsap.to(card, {
+      rotateX: 0,
+      rotateY: 0,
+      y: 0,
+      duration: 0.55,
+      ease: "power3.out",
+      overwrite: "auto",
+    });
+  };
+
   return (
     <article
+      ref={cardRef}
+      onPointerMove={handlePointerMove}
+      onPointerLeave={resetCard}
       className={cn(
-        "group relative p-6 bg-card border border-border rounded-lg transition-all hover:border-primary/50 hover:bg-card/80 cursor-pointer h-full",
+        "group relative p-6 bg-card border border-border rounded-lg transition-colors hover:border-primary/50 hover:bg-card/80 cursor-pointer h-full will-change-transform",
         className
       )}
     >

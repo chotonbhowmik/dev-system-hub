@@ -6,4 +6,5 @@
 4. [done] Remove dev-only Styleguide page and route
 5. [done] Verify all pages in preview (19 projects, filters, detail pages, testimonials, contact form toast all pass)
 6. [open] Add real social links (GitHub/LinkedIn) and email — blocked: user hasn't provided them
-7. [open] Link each project card to its live site — blocked: user hasn't provided project URLs
+7. [done] Link each project card to its live site in a new browser tab
+8. [done] Add professional GSAP scroll motion, Three.js homepage depth, card tilt, and reduced-motion support
