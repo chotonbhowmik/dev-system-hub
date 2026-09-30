@@ -6,6 +6,7 @@ export interface Project {
   tags: string[];
   description: string;
   year: string;
+  url: string;
 }
 
 export const projects: Project[] = [
@@ -17,6 +18,7 @@ export const projects: Project[] = [
     tags: ["WordPress", "AI", "SaaS"],
     description: "An AI-powered fitness business platform for trainers, gyms, and wellness professionals.",
     year: "2024",
+    url: "https://gymcity.com/",
   },
   {
     slug: "1touchpoint",
@@ -26,6 +28,7 @@ export const projects: Project[] = [
     tags: ["WordPress", "UX", "CMS"],
     description: "A focused business website designed to make a complex service offer feel clear and approachable.",
     year: "2025",
+    url: "https://1touchpoint.com/",
   },
   {
     slug: "get-levrg",
@@ -35,6 +38,7 @@ export const projects: Project[] = [
     tags: ["WordPress", "Strategy", "Conversion"],
     description: "A high-clarity services experience built around trust, conversion, and a confident brand voice.",
     year: "2026",
+    url: "https://getlevrg.com/",
   },
   {
     slug: "coders-bucket",
@@ -44,6 +48,7 @@ export const projects: Project[] = [
     tags: ["WordPress", "Software", "Elementor"],
     description: "A custom software development partner website with a direct, technical, and service-led presentation.",
     year: "2026",
+    url: "https://codersbucket.com/",
   },
   {
     slug: "wg-counsel",
@@ -53,6 +58,7 @@ export const projects: Project[] = [
     tags: ["WordPress", "Brand", "SEO"],
     description: "A polished professional services website shaped around authority, clarity, and easy contact.",
     year: "2025",
+    url: "https://wgcounsel.com/",
   },
   {
     slug: "ts-imagine",
@@ -62,6 +68,7 @@ export const projects: Project[] = [
     tags: ["WordPress", "Creative", "Motion"],
     description: "A creative brand presence designed to turn a distinctive point of view into an engaging web experience.",
     year: "2025",
+    url: "https://tsimagine.com/",
   },
   {
     slug: "simply-eloped",
@@ -71,6 +78,7 @@ export const projects: Project[] = [
     tags: ["React", "Search", "UX"],
     description: "A React venue discovery experience helping couples find the right place for an intimate celebration.",
     year: "2025",
+    url: "https://simplyeloped.com/venue-finder/",
   },
   {
     slug: "swalitime",
@@ -80,6 +88,7 @@ export const projects: Project[] = [
     tags: ["React", "Product", "Responsive"],
     description: "A responsive React product experience built to make everyday interactions feel fast and intuitive.",
     year: "2025",
+    url: "https://www.swalitime.com/",
   },
   {
     slug: "ryogen-ai",
@@ -89,6 +98,7 @@ export const projects: Project[] = [
     tags: ["React", "AI", "Product design"],
     description: "A focused AI product experience with a clear path from curiosity to understanding and action.",
     year: "2025",
+    url: "https://ryogen.ai/",
   },
   {
     slug: "shuttle-bd",
@@ -98,6 +108,7 @@ export const projects: Project[] = [
     tags: ["Vue.js", "Travel", "UX"],
     description: "A Vue.js experience for a transport service with clear routes, useful information, and a direct booking journey.",
     year: "2025",
+    url: "https://www.shuttlebd.com/",
   },
   {
     slug: "hidden-lake-haunts",
@@ -107,6 +118,7 @@ export const projects: Project[] = [
     tags: ["Wix", "Brand", "Bookings"],
     description: "A memorable Wix website for a destination experience, built to make discovery and planning feel immersive.",
     year: "2025",
+    url: "https://www.hiddenlakehaunts.com/",
   },
   {
     slug: "tei3",
@@ -116,6 +128,7 @@ export const projects: Project[] = [
     tags: ["Wix", "Content", "Responsive"],
     description: "A clear, approachable Wix presence for an organization with information structured for easy exploration.",
     year: "2025",
+    url: "https://www.tei3.org/",
   },
   {
     slug: "gladis-cleaning",
@@ -125,6 +138,7 @@ export const projects: Project[] = [
     tags: ["Wix", "Local business", "SEO"],
     description: "A service-led Wix website designed to build local trust and make enquiries straightforward.",
     year: "2025",
+    url: "https://www.gladiscleaningservices11.com/",
   },
   {
     slug: "akadia-group",
@@ -134,6 +148,7 @@ export const projects: Project[] = [
     tags: ["Wix", "Business", "Brand"],
     description: "A polished Wix business presence focused on presenting services with confidence and clarity.",
     year: "2025",
+    url: "https://www.akadiagroup.com/",
   },
   {
     slug: "portable-x-ray-repair",
@@ -143,6 +158,7 @@ export const projects: Project[] = [
     tags: ["Wix", "Services", "CMS"],
     description: "A specialist Wix service website helping customers quickly understand repair expertise and reach the team.",
     year: "2025",
+    url: "https://www.portablex-rayrepaircorporation.com/",
   },
   {
     slug: "kevin-baker",
@@ -152,6 +168,7 @@ export const projects: Project[] = [
     tags: ["Wix", "Personal brand", "Design"],
     description: "A personal Wix site shaped around a clear introduction, focused content, and easy contact.",
     year: "2025",
+    url: "https://semexpertsaa.wixsite.com/kevinbaker406",
   },
   {
     slug: "jacobson-doug",
@@ -161,6 +178,7 @@ export const projects: Project[] = [
     tags: ["Wix Studio", "Responsive", "CMS"],
     description: "A Wix Studio build with a flexible visual system and a presentation tailored to its subject.",
     year: "2025",
+    url: "https://jacobsondoug.wixstudio.com/website",
   },
   {
     slug: "aat-3d",
@@ -170,6 +188,7 @@ export const projects: Project[] = [
     tags: ["Webflow", "3D", "Motion"],
     description: "A Webflow experience for a 3D-focused brand, balancing visual impact with a clear project story.",
     year: "2025",
+    url: "https://aat3d.com/",
   },
   {
     slug: "oleria",
@@ -179,6 +198,7 @@ export const projects: Project[] = [
     tags: ["Webflow", "Brand", "Marketing"],
     description: "A refined Webflow brand experience built around visual storytelling, polish, and confident navigation.",
     year: "2025",
+    url: "https://www.oleria.com/",
   },
 ];
 
