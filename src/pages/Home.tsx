@@ -8,6 +8,7 @@ import { TypingCursor } from "@/components/ui/TypingCursor";
 import { TechTag } from "@/components/ui/TechTag";
 import { ArrowRight } from "lucide-react";
 import { projects, coreStrengths } from "@/data/portfolio";
+import { HeroParticleField } from "@/components/motion/HeroParticleField";
 
 const featuredSlugs = ["gym-city", "simply-eloped", "ryogen-ai", "aat-3d"];
 const featuredProjects = featuredSlugs
@@ -24,8 +25,9 @@ export default function Home() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative min-h-[80vh] flex items-center bg-grid">
-        <div className="container">
+      <section className="relative min-h-[80vh] flex items-center overflow-hidden bg-grid">
+        <HeroParticleField />
+        <div className="container relative z-10">
           <div className="max-w-3xl opacity-0 animate-fade-in-up">
             {/* Availability + label */}
             <div className="flex items-center gap-3 mb-6">

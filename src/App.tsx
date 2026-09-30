@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ScrollToTop } from "@/components/ScrollToTop";
+import { MotionSystem } from "@/components/motion/MotionSystem";
 import Home from "./pages/Home";
 import Work from "./pages/Work";
 import ProjectDetail from "./pages/ProjectDetail";
@@ -21,6 +22,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <ScrollToTop />
+        <MotionSystem />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/work" element={<Work />} />
