@@ -5,37 +5,19 @@ import { CodeDivider } from "@/components/ui/CodeDivider";
 import { CodeLabel } from "@/components/ui/CodeLabel";
 import { ProjectCard } from "@/components/ui/ProjectCard";
 import { TypingCursor } from "@/components/ui/TypingCursor";
+import { TechTag } from "@/components/ui/TechTag";
 import { ArrowRight } from "lucide-react";
+import { projects, coreStrengths } from "@/data/portfolio";
 
-const featuredProjects = [
-  {
-    name: "Scalable Fintech Platform",
-    slug: "scalable-fintech-platform",
-    description: "Development of a scalable financial platform handling millions of transactions with real-time processing and robust security measures.",
-    stack: ["React", "TypeScript", "Node.js", "PostgreSQL"],
-    impact: "35% latency reduction, millions of users supported",
-  },
-  {
-    name: "Internal Design System",
-    slug: "internal-design-system",
-    description: "Creation of a robust design system enabling multiple teams to build consistent, accessible interfaces at scale.",
-    stack: ["React", "Storybook", "CSS-in-JS"],
-    impact: "40% increase in team productivity",
-  },
-  {
-    name: "Real-Time Analytics Dashboard",
-    slug: "real-time-analytics-dashboard",
-    description: "Real-time dashboard for instant decision-making with live data visualization and customizable metrics.",
-    stack: ["Next.js", "WebSockets", "D3.js"],
-    impact: "Instant insights for product and business teams",
-  },
-  {
-    name: "E-Commerce Microservices",
-    slug: "e-commerce-microservices-architecture",
-    description: "Complete microservices ecosystem for high-traffic e-commerce platform with event-driven architecture and automated scaling.",
-    stack: ["Go", "Kubernetes", "gRPC", "MongoDB"],
-    impact: "99.99% uptime, 10x throughput improvement",
-  },
+const featuredSlugs = ["gym-city", "simply-eloped", "ryogen-ai", "aat-3d"];
+const featuredProjects = featuredSlugs
+  .map((slug) => projects.find((p) => p.slug === slug))
+  .filter((p): p is NonNullable<typeof p> => Boolean(p));
+
+const stats = [
+  { value: "7+", label: "Years building" },
+  { value: "30+", label: "Projects launched" },
+  { value: "100%", label: "Responsive delivery" },
 ];
 
 export default function Home() {
@@ -45,63 +27,115 @@ export default function Home() {
       <section className="relative min-h-[80vh] flex items-center bg-grid">
         <div className="container">
           <div className="max-w-3xl opacity-0 animate-fade-in-up">
-            {/* Code-style label */}
-            <CodeLabel className="mb-6">Senior Developer</CodeLabel>
+            {/* Availability + label */}
+            <div className="flex items-center gap-3 mb-6">
+              <CodeLabel>Full-stack web developer · Based in Bangladesh</CodeLabel>
+              <span className="hidden sm:inline-flex items-center gap-2 font-mono text-xs text-muted-foreground border border-border rounded-full px-3 py-1">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-60" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
+                </span>
+                Available for work
+              </span>
+            </div>
 
             {/* Headline with typing cursor */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
-              Hi, I'm Diego Ramirez.
+              I design and build
               <br />
-              <span className="text-muted-foreground">I build reliable digital systems</span>
+              <span className="text-primary">digital experiences</span>
+              <br />
+              <span className="text-muted-foreground">that sell.</span>
               <TypingCursor />
             </h1>
 
             {/* Subheadline */}
             <p className="text-lg text-muted-foreground mb-8 max-w-xl leading-relaxed opacity-0 animate-fade-in-up stagger-1">
-              A Mexico-based developer focused on building products that scale, perform, and deliver real impact. 
-              Working at the intersection of engineering, product, and design to turn 
-              complex problems into elegant solutions.
+              I help brands and businesses launch faster, sharper websites using
+              React.js, Vue.js, WordPress, Webflow, Wix, and modern front-end
+              systems built for performance and conversion.
             </p>
 
             {/* CTA */}
-            <div className="opacity-0 animate-fade-in-up stagger-2">
+            <div className="flex flex-wrap gap-4 opacity-0 animate-fade-in-up stagger-2">
               <Button asChild size="lg" className="font-mono transition-transform hover:scale-105">
                 <Link to="/work">
-                  View Work
+                  Explore the work
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="font-mono">
+                <Link to="/contact">Book a project</Link>
               </Button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Featured Projects */}
+      {/* Stats */}
+      <section className="border-y border-border bg-card/50">
+        <div className="container py-10">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
+            {stats.map((stat, index) => (
+              <div
+                key={stat.label}
+                className={`text-center opacity-0 animate-fade-in-up stagger-${index + 1}`}
+              >
+                <p className="font-mono text-3xl md:text-4xl font-bold text-primary mb-1">
+                  {stat.value}
+                </p>
+                <p className="font-mono text-sm text-muted-foreground">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Core Strengths */}
       <section className="py-20">
         <div className="container">
           <div className="opacity-0 animate-fade-in-up">
-            <CodeDivider label="Featured Work" />
+            <CodeDivider label="Core Strengths" />
+          </div>
+          <div className="flex flex-wrap gap-3 opacity-0 animate-fade-in-up stagger-1">
+            {coreStrengths.map((strength) => (
+              <span
+                key={strength}
+                className="font-mono text-sm px-4 py-2 border border-border rounded-full text-muted-foreground hover:text-primary hover:border-primary/50 transition-colors"
+              >
+                {strength}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Projects */}
+      <section className="pb-20">
+        <div className="container">
+          <div className="opacity-0 animate-fade-in-up">
+            <CodeDivider label="Selected Work" />
           </div>
 
           <div className="grid gap-6 md:grid-cols-2">
             {featuredProjects.map((project, index) => (
-              <div 
-                key={project.name} 
-                className={`opacity-0 animate-fade-in-up stagger-${index + 1}`}
+              <div
+                key={project.slug}
+                className={`opacity-0 animate-fade-in-up stagger-${Math.min(index + 1, 4)}`}
               >
-                <ProjectCard {...project} className="hover-lift" />
+                <ProjectCard project={project} className="hover-lift" />
               </div>
             ))}
           </div>
 
           {/* View All Link */}
           <div className="mt-12 text-center opacity-0 animate-fade-in-up stagger-4">
-            <Link 
-              to="/work" 
+            <Link
+              to="/work"
               className="inline-flex items-center font-mono text-sm text-muted-foreground hover:text-primary transition-colors link-underline"
             >
               <span className="text-primary mr-2">{"//"}</span>
-              View all projects
+              View all {projects.length} projects
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </div>
